@@ -1,0 +1,81 @@
+body {
+  background-color: cadetblue;
+}
+
+/* siting myself here again, from my tic tac toe project */
+.container {
+  border: 1px solid gold;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  border: 1px solid crimson;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell1 {
+  border-left: solid mintcream;
+  border-right: solid mintcream;
+  border-bottom: solid mintcream;
+  border-top: solid mintcream;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.cell2 {
+  border-bottom: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+
+.cell3 {
+  border-left: solid mintcream;
+  border-bottom: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+
+.cell4 {
+  border-right: solid mintcream;
+  border-bottom: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+
+.cell5 {
+  border-bottom: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+
+.cell6 {
+  border-left: solid mintcream;
+  border-bottom: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+
+.cell7 {
+  border-right: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
+.cell8 {
+  border-top: solid mintcream;
+  border-style: hidden;
+  height: 100px;
+  width: 100px;
+}
+
+.cell9 {
+  border-left: solid mintcream;
+  height: 100px;
+  width: 100px;
+}

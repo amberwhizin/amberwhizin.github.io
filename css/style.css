@@ -11,11 +11,13 @@ body {
 
 .wrapper {
   border: 1px solid crimson;
+  display: flex;
 }
 
 .column {
+  border: 1px solid plum;
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
 }
 
 /* siting https://css-tricks.com/the-shapes-of-css/ here */
@@ -26,9 +28,17 @@ body {
   background-color: red;
 }
 .yellow {
-    background-color: yellow;
+  background-color: yellow;
 }
 
+.cell0 {
+  border-left: solid mintcream;
+  border-right: solid mintcream;
+  border-bottom: solid mintcream;
+  border-top: solid mintcream;
+  height: 100px;
+  width: 100px;
+}
 .cell1 {
   border-left: solid mintcream;
   border-right: solid mintcream;

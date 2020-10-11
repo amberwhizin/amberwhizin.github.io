@@ -21,9 +21,9 @@ body {
 /* siting https://css-tricks.com/the-shapes-of-css/ here */
 .circle {
   border-radius: 50%;
-  width: 15%;
-  height: 15%;
-  background-color: plum;
+  width: 10%;
+  height: 10%;
+  background-color: red;
 }
 
 .cell1 {
@@ -33,8 +33,6 @@ body {
   border-top: solid mintcream;
   height: 100px;
   width: 100px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .cell2 {

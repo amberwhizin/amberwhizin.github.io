@@ -2,7 +2,7 @@ body {
   background-color: paleturquoise;
 }
 
-/* siting myself here again, from my tic tac toe project */
+/* siting myself here - from my tic tac toe project from here */
 .container {
   border: 1px solid gold;
   display: flex;
@@ -30,7 +30,7 @@ body {
 .yellow {
   background-color: yellow;
 }
-
+/* siting myself here - from my tic tac toe project from here */
 .cell {
   border-left: solid mintcream;
   border-right: solid mintcream;

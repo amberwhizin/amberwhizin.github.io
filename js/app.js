@@ -47,6 +47,7 @@ $(() => {
     $(".wrapper").append($column);
   }
 
+  
   // some where that holds who turn it is
   // turns will be based on clicks, when a player clicks on a square then the index of that square is pushed into an array to keep track of ?
 });

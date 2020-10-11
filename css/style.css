@@ -25,6 +25,9 @@ body {
   height: 10%;
   background-color: red;
 }
+.yellow {
+    background-color: yellow;
+}
 
 .cell1 {
   border-left: solid mintcream;

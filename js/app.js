@@ -8,20 +8,17 @@ $(() => {
   const getPlayersTurn = () => {
     const turn = isPlayer1
       ? (player1 += generateCircle())
-      : (player2 += console.log("yellow"));
+      : (player2 += generateCircle(true));
     isPlayer1 = !isPlayer1;
     return turn;
   };
 
-  const generateCircle = () => {
+  const generateCircle = (isYellow = false) => {
     const $circle = $("<div>").addClass("circle");
-    $(".wrapper").append($circle);
-    // if (player1 !== []) {
-    //     $('.circle').attr('background', 'yellow')
-    // } else {
-        
-    // }
-
+    if (isYellow) {
+      $circle.addClass("yellow");
+    }
+    $(".cell").append($circle);
   };
 
   const makeSquares = ($column) => {

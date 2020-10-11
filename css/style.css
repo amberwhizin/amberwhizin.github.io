@@ -31,86 +31,11 @@ body {
   background-color: yellow;
 }
 
-.cell0 {
+.cell {
   border-left: solid mintcream;
   border-right: solid mintcream;
   border-bottom: solid mintcream;
   border-top: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-.cell1 {
-  border-left: solid mintcream;
-  border-right: solid mintcream;
-  border-bottom: solid mintcream;
-  border-top: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell2 {
-  border-bottom: solid mintcream;
-  border-top: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell3 {
-  border-right: solid mintcream;
-  border-left: solid mintcream;
-  border-bottom: solid mintcream;
-  border-top: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell4 {
-  border-right: solid mintcream;
-  border-bottom: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell5 {
-  border-bottom: solid mintcream;
-  border-left: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell6 {
-  border-right: solid mintcream;
-  border-left: solid mintcream;
-  border-bottom: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell7 {
-  border-right: solid mintcream;
-  border-bottom: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-.cell8 {
-  border-bottom: solid mintcream;
-  border-left: solid mintcream;
-  /* border-style: hidden; */
-  height: 100px;
-  width: 100px;
-}
-
-.cell9 {
-  border-left: solid mintcream;
-  border-bottom: solid mintcream;
-  height: 100px;
-  width: 100px;
-}
-
-.cell10 {
-  border-right: solid mintcream;
-  border-left: solid mintcream;
-  border-bottom: solid mintcream;
   height: 100px;
   width: 100px;
 }

@@ -30,7 +30,7 @@ $(() => {
         .on("click", () => {
           const isPlayer1Turn = getIsPlayer1Turn();
           const $circle = generateCircle(isPlayer1Turn);
-          $cell.append($circle);
+          $cell.append($circle).off("click");
         });
       $column.append($cell);
     }

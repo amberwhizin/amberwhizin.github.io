@@ -23,8 +23,8 @@ body {
 /* siting https://css-tricks.com/the-shapes-of-css/ here */
 .circle {
   border-radius: 50%;
-  width: 10%;
-  height: 10%;
+  width: 100%;
+  height: 100%;
   background-color: red;
 }
 .yellow {

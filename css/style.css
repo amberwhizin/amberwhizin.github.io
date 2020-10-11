@@ -18,6 +18,11 @@ body {
   flex-direction: row;
 }
 
+/* siting https://css-tricks.com/the-shapes-of-css/ here
+.square {
+    border-radius
+} */
+
 .cell1 {
   border-left: solid mintcream;
   border-right: solid mintcream;

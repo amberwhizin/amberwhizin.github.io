@@ -5,11 +5,11 @@ $(() => {
   const column0 = [];
   const column1 = [];
   const column2 = [];
-  const column2 = [];
-  const column2 = [];
-  const column2 = [];
+  const column3 = [];
+  const column4 = [];
+  const column5 = [];
   const column6 = [];
-  const board = [column0, column1, column2, [], [], [], column6];
+  const board = [column0, column1, column2, column3, column4, column5, column6];
   debugger;
   // if not player1 turn then player2
   // siting myself here via tic-tac-toe project
@@ -34,14 +34,12 @@ $(() => {
       const $cell = $("<div>")
         .addClass("cell")
         .addClass("cell" + i);
-      // .on("click", () => {
-      //   const isPlayer1Turn = getIsPlayer1Turn();
-      //   if (isPlayer1Turn === column0) {
-      //      column0 += piece;
-      //   }
-      //   const $circle = generateCircle(isPlayer1Turn);
-      //   $cell.append($circle).off("click");
-      // });
+      //   .on("click", () => {
+      //     const isPlayer1Turn = getIsPlayer1Turn();
+
+      //     const $circle = generateCircle(isPlayer1Turn);
+      //     $cell.append($circle).off("click");
+      //   });
       if (piece === yellow) {
         const $circle = generateCircle(true);
         $cell.append($circle);
@@ -55,21 +53,34 @@ $(() => {
   };
   // creates columns with cells in them
   const generateColumn = (index) => {
-    const $column = $("<div>").addClass("column").addClass(`column${index}`);
     const currentColumnInfo = board[index];
+    const $column = $("<div>")
+      .addClass("column")
+      .addClass(`column${index}`)
+      .on("click", () => {
+        
+        if (currentColumnInfo.length < 6) {
+            currentColumnInfo.push(yellow);
+        }
+        console.log(currentColumnInfo);
+        render();
+      });
+
     console.log({ currentColumnInfo });
     makeCells($column, currentColumnInfo); // holds info for my cells
+
     return $column;
   };
   // makes multiple columns
   const render = () => {
+    $(".wrapper").empty();
     for (let i = 0; i < 7; i++) {
       debugger;
       const $column = generateColumn(i);
       $(".wrapper").append($column);
     }
   };
-
+  render();
   // cell5 is clicked
   //cell5.shift
   // cell5.unshift

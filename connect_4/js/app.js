@@ -1,7 +1,6 @@
 $(() => {
   const yellow = "yellow";
   const red = "red";
-  //   const redWin = ["red", "red", "red", "red"];
 
   const column0 = [];
   const column1 = [];
@@ -14,7 +13,6 @@ $(() => {
   //debugger;
   // if not player1 turn then player2
   // siting myself here via tic-tac-toe project
-
   let isPlayer1 = false;
   const getIsPlayer1Turn = () => {
     isPlayer1 = !isPlayer1;
@@ -45,6 +43,10 @@ $(() => {
         const $circle = generateCircle();
         $cell.append($circle);
       }
+      if (piece === undefined) {
+        const $circle = generateCircle().addClass("background-fill");
+        $cell.append($circle);
+      }
       $column.append($cell);
     }
   };
@@ -66,13 +68,48 @@ $(() => {
           currentColumnInfo.push(yellow);
         }
         render();
-        winVertically();
+        //winVertically();
+        winHorizontally();
       });
 
     console.log({ currentColumnInfo });
     makeCells($column, currentColumnInfo); // holds info for my cells
     return $column;
   };
+  const winHorizontally = () => {
+    let score = 0;
+    let win = [];
+    console.log(score);
+
+    for (let i = 0; i < board.length; i++) {
+      const column = board[i];
+      console.log("$$$$BOARD$$$$$", board);
+
+      for (let j = 0; j < column.length; j++) {
+        console.log("$$$column$$$", column);
+        if (column === red) {
+          score++;
+          console.log("column");
+          column.shift();
+          win.push(column);
+          if (win === 4) {
+            console.log("winner");
+          }
+        } else {
+          score++;
+          console.log("keep at it");
+        }
+        // if (piece.includes([red, red, red, red])) {
+        //   console.log("*******", piece);
+        //   console.log("winner");
+        // } else {
+        //   score++;
+        //   console.log("keep at it");
+        // }
+      }
+    }
+  };
+
   const winVertically = () => {
     let score = 0;
     console.log(score);
@@ -83,7 +120,7 @@ $(() => {
       for (let j = 0; j < piece.length; j++) {
         console.log("$$$PIECE$$$", piece);
 
-        if (score === 4) {
+        if (board.includes(["red", "red", "red", "red"])) {
           console.log("winner");
         }
       }
@@ -122,3 +159,11 @@ $(() => {
 //       alert("winner");
 //     }
 // }
+
+// if (piece === piece * 4) {
+//winner
+//} sort it?
+
+// if (array.includes['red', 'red', 'red', 'red']) {
+//winner
+//}

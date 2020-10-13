@@ -1,7 +1,7 @@
 $(() => {
   const yellow = "yellow";
   const red = "red";
-  const redWin = ["red", "red", "red", "red"];
+  //   const redWin = ["red", "red", "red", "red"];
 
   const column0 = [];
   const column1 = [];
@@ -31,7 +31,6 @@ $(() => {
 
   // invokes circles when screen clicked, switches between the two
   const makeCells = ($column, columnInfo) => {
-    let score = 0;
     for (let i = 0; i < 6; i++) {
       const piece = columnInfo[i];
       const $cell = $("<div>")
@@ -45,17 +44,6 @@ $(() => {
       if (piece === red) {
         const $circle = generateCircle();
         $cell.append($circle);
-        //vertical
-        if (red) {
-          score++;
-          //console.log(score);
-          if (score === 4) {
-            alert("winner");
-          }
-        } else {
-          score++;
-          console.log("keep at it");
-        }
       }
       $column.append($cell);
     }
@@ -78,15 +66,31 @@ $(() => {
           currentColumnInfo.push(yellow);
         }
         render();
+        winVertically();
       });
 
     console.log({ currentColumnInfo });
     makeCells($column, currentColumnInfo); // holds info for my cells
     return $column;
   };
+  const winVertically = () => {
+    let score = 0;
+    console.log(score);
+    for (let i = 0; i < board.length; i++) {
+      const piece = board[i];
+      score++;
+      console.log("$$$$BOARD$$$$$", board);
+      for (let j = 0; j < piece.length; j++) {
+        console.log("$$$PIECE$$$", piece);
+
+        if (score === 4) {
+          console.log("winner");
+        }
+      }
+    }
+  };
   // makes multiple columns
   const render = () => {
-    console.log({ board });
     $(".wrapper").empty();
     for (let i = 0; i < 7; i++) {
       const $column = generateColumn(i);
@@ -94,14 +98,16 @@ $(() => {
     }
   };
   render();
-  // cell5 is clicked
-  //cell5.shift
-  // cell5.unshift
-
-  //if cell is clicked, and its red, push it into the array, then render the array position
-  //you click in column 0,
-  //go to the earliest position
 });
+
+// cell5 is clicked
+//cell5.shift
+// cell5.unshift
+
+//if cell is clicked, and its red, push it into the array, then render the array position
+//you click in column 0,
+//go to the earliest position
+
 // horizontal
 //   debugger;
 //   if (

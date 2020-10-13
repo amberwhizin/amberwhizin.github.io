@@ -10,10 +10,11 @@ $(() => {
   const column5 = [];
   const column6 = [];
   const board = [column0, column1, column2, column3, column4, column5, column6];
-  debugger;
+  //debugger;
   // if not player1 turn then player2
   // siting myself here via tic-tac-toe project
-  let isPlayer1 = true;
+
+  let isPlayer1 = false;
   const getIsPlayer1Turn = () => {
     isPlayer1 = !isPlayer1;
     return isPlayer1;
@@ -34,12 +35,7 @@ $(() => {
       const $cell = $("<div>")
         .addClass("cell")
         .addClass("cell" + i);
-      //   .on("click", () => {
-      //     const isPlayer1Turn = getIsPlayer1Turn();
 
-      //     const $circle = generateCircle(isPlayer1Turn);
-      //     $cell.append($circle).off("click");
-      //   });
       if (piece === yellow) {
         const $circle = generateCircle(true);
         $cell.append($circle);
@@ -58,24 +54,25 @@ $(() => {
       .addClass("column")
       .addClass(`column${index}`)
       .on("click", () => {
-        
         if (currentColumnInfo.length < 6) {
+          const isPlayer1 = getIsPlayer1Turn();
+          if (isPlayer1) {
+            currentColumnInfo.push(red);
+          } else {
             currentColumnInfo.push(yellow);
+          }
         }
-        console.log(currentColumnInfo);
         render();
       });
 
     console.log({ currentColumnInfo });
     makeCells($column, currentColumnInfo); // holds info for my cells
-
     return $column;
   };
   // makes multiple columns
   const render = () => {
     $(".wrapper").empty();
     for (let i = 0; i < 7; i++) {
-      debugger;
       const $column = generateColumn(i);
       $(".wrapper").append($column);
     }

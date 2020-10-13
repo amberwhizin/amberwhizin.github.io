@@ -46,3 +46,10 @@ body {
   height: 100px;
   width: 100px;
 }
+
+
+.row {
+  border: 1px solid plum;
+  display: flex;
+  flex-direction: row-reverse;
+}

@@ -1,6 +1,7 @@
 $(() => {
   const yellow = "yellow";
   const red = "red";
+  const redWin = ["red", "red", "red", "red"];
 
   const column0 = [];
   const column1 = [];
@@ -30,6 +31,7 @@ $(() => {
 
   // invokes circles when screen clicked, switches between the two
   const makeCells = ($column, columnInfo) => {
+    let score = 0;
     for (let i = 0; i < 6; i++) {
       const piece = columnInfo[i];
       const $cell = $("<div>")
@@ -43,10 +45,22 @@ $(() => {
       if (piece === red) {
         const $circle = generateCircle();
         $cell.append($circle);
+        //vertical
+        if (red) {
+          score++;
+          //console.log(score);
+          if (score === 4) {
+            alert("winner");
+          }
+        } else {
+          score++;
+          console.log("keep at it");
+        }
       }
       $column.append($cell);
     }
   };
+
   // creates columns with cells in them
   const generateColumn = (index) => {
     const currentColumnInfo = board[index];
@@ -54,13 +68,14 @@ $(() => {
       .addClass("column")
       .addClass(`column${index}`)
       .on("click", () => {
-        if (currentColumnInfo.length < 6) {
-          const isPlayer1 = getIsPlayer1Turn();
-          if (isPlayer1) {
-            currentColumnInfo.push(red);
-          } else {
-            currentColumnInfo.push(yellow);
-          }
+        if (currentColumnInfo.length >= 6) {
+          return;
+        }
+        const isPlayer1 = getIsPlayer1Turn();
+        if (isPlayer1) {
+          currentColumnInfo.push(red);
+        } else {
+          currentColumnInfo.push(yellow);
         }
         render();
       });
@@ -71,6 +86,7 @@ $(() => {
   };
   // makes multiple columns
   const render = () => {
+    console.log({ board });
     $(".wrapper").empty();
     for (let i = 0; i < 7; i++) {
       const $column = generateColumn(i);
@@ -86,3 +102,17 @@ $(() => {
   //you click in column 0,
   //go to the earliest position
 });
+// horizontal
+//   debugger;
+//   if (
+//     piece === column0[i] &&
+//     piece === column1[i] &&
+//     piece === column2[i] &&
+//     piece === column3[i]
+//   ) {
+//     score++;
+//     console.log(score)
+//     if (score === 4) {
+//       alert("winner");
+//     }
+// }

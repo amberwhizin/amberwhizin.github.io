@@ -10,7 +10,7 @@ $(() => {
   const column5 = [];
   const column6 = [];
   let board = [column0, column1, column2, column3, column4, column5, column6];
-  //debugger;
+
   // if not player1 turn then player2
   // siting myself here via tic-tac-toe project
   let isPlayer1 = false;
@@ -96,7 +96,7 @@ $(() => {
         }
         console.log(redsInARow);
         if (redsInARow === 4) {
-          console.log("You win!");
+          console.log("Red wins!");
           board = [[], [], [], [], [], [], []];
           // yellows turn
         }
@@ -108,17 +108,16 @@ $(() => {
         }
         console.log(yellowsInARow);
         if (yellowsInARow === 4) {
-          console.log("You win!");
+          console.log("Yellow wins!");
           board = [[], [], [], [], [], [], []];
+        }
+        if (red === 4) {
         }
       }
     }
   };
 
-  const winHorizontally = () => {
-   
-  };
-  
+  const winHorizontally = () => {};
   // makes multiple columns
   const render = () => {
     $(".wrapper").empty();

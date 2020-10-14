@@ -68,8 +68,9 @@ $(() => {
           currentColumnInfo.push(yellow);
         }
         render();
-        //winVertically();
-        winVertically();
+        const horizontalBoard = getHorizontalBoard(board);
+        winScenario(horizontalBoard);
+        winScenario(board);
       });
 
     // console.log({ currentColumnInfo });
@@ -78,7 +79,7 @@ $(() => {
   };
 
   //win logic
-  const winVertically = () => {
+  const winScenario = (board) => {
     for (let i = 0; i < board.length; i++) {
       const column = board[i];
 
@@ -117,7 +118,6 @@ $(() => {
     }
   };
 
-  const winHorizontally = () => {};
   // makes multiple columns
   const render = () => {
     $(".wrapper").empty();
@@ -129,6 +129,22 @@ $(() => {
   render();
 });
 
+
+
+const getHorizontalBoard = (board) => {
+  let horizontalBoard = [];
+  for (let i = 0; i < board.length; i++) {
+    const currentColumn = board[i];
+    const copy = currentColumn.slice(0);
+    horizontalBoard.push(copy);
+  }
+  console.log(horizontalBoard, board);
+  return horizontalBoard;
+};
+
+//////////////////////////////////////////
+////////////GRAVEYARD CODE///////////////
+////////////////////////////////////////
 // cell5 is clicked
 //cell5.shift
 // cell5.unshift

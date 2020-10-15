@@ -71,11 +71,13 @@ $(() => {
         const horizontalBoard = changeToRow(board);
         winScenario(horizontalBoard);
 
+        const diagonalLeftBoard = changeLeftDiagonal(board, boardRow);
+        winScenario(diagonalLeftBoard);
+
         //console.log(board);
         winScenario(board);
       });
 
-    // console.log({ currentColumnInfo });
     makeCells($column, currentColumnInfo); // holds info for my cells
     return $column;
   };
@@ -114,8 +116,6 @@ $(() => {
           console.log("Yellow wins!");
           board = [[], [], [], [], [], [], []];
         }
-        if (red === 4) {
-        }
       }
     }
   };
@@ -132,15 +132,15 @@ $(() => {
 
   //find row in column
   // citing https://medium.com/dev-genius/lets-rotate-a-matrix-clockwise-javascript-beginners-65a9c34aa0a6
+  const row0 = [];
+  const row1 = [];
+  const row2 = [];
+  const row3 = [];
+  const row4 = [];
+  const row5 = [];
+  const row6 = [];
+  let boardRow = [row0, row1, row2, row3, row4, row5, row6];
   const changeToRow = (board) => {
-    const row0 = [];
-    const row1 = [];
-    const row2 = [];
-    const row3 = [];
-    const row4 = [];
-    const row5 = [];
-    const row6 = [];
-    let boardRow = [row0, row1, row2, row3, row4, row5, row6];
     for (let i = 0; i < board.length; i++) {
       const column = board[i];
       for (let j = 0; j < column.length; j++) {
@@ -148,7 +148,8 @@ $(() => {
         boardRow[j].push(token);
       }
     }
-    console.log(boardRow);
+    //console.log(boardRow);
+
     return boardRow;
   };
 
@@ -160,20 +161,61 @@ $(() => {
     const diagonal4 = [];
     const diagonal5 = [];
     const diagonal6 = [];
-    let boarDiagonal = [diagonal0, diagonal1, diagonal2, diagonal3, diagonal4, diagonal5, diagonal6];
-    for(let i = 0; i < board.length; i++) {
+    const diagonal7 = [];
+    const diagonal8 = [];
+    const diagonal9 = [];
+    const diagonal10 = [];
+    const diagonal11 = [];
+
+    let boardDiagonal = [
+      diagonal0,
+      diagonal1,
+      diagonal2,
+      diagonal3,
+      diagonal4,
+      diagonal5,
+      diagonal6,
+      diagonal7,
+      diagonal8,
+      diagonal9,
+      diagonal10,
+      diagonal11,
+    ];
+    for (let i = 0; i < board.length; i++) {
       const column = board[i];
-      
-           
+      for (let j = 0; j < column.length; j++) {
+        const token = column[j];
+        const x = i
+        const y = j
+        const add = x + y;
+        const diag = add;
+
+        console.log(diag)
+        boardDiagonal[j].push(diag);
+      }
     }
+    console.log(boardDiagonal);
 
-
-  }
+    return boardDiagonal;
+  };
 });
 
 //////////////////////////////////////////
 ////////////GRAVEYARD CODE///////////////
 ////////////////////////////////////////
+
+// //column[j] + row[k] === diagonal[i]
+// for (let i = 0; i < $column.length; i++) {
+//   const token = column[i];
+//   for (let j = 0; j < row.length; j++) {
+//     const tokenRow = row[j];
+
+//   }
+// }
+//const diagonal = Math.sqrt(j) + Math.sqrt(k)
+// diagonal === Math.sqrt(i)
+//boardDiagonal.push()
+
 // cell5 is clicked
 //cell5.shift
 // cell5.unshift

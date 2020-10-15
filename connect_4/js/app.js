@@ -152,7 +152,23 @@ $(() => {
     return boardRow;
   };
 
- 
+  const changeLeftDiagonal = (board) => {
+    const diagonal0 = [];
+    const diagonal1 = [];
+    const diagonal2 = [];
+    const diagonal3 = [];
+    const diagonal4 = [];
+    const diagonal5 = [];
+    const diagonal6 = [];
+    let boarDiagonal = [diagonal0, diagonal1, diagonal2, diagonal3, diagonal4, diagonal5, diagonal6];
+    for(let i = 0; i < board.length; i++) {
+      const column = board[i];
+      
+           
+    }
+
+
+  }
 });
 
 //////////////////////////////////////////

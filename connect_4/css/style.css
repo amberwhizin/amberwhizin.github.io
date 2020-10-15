@@ -4,18 +4,18 @@ body {
 
 h1 {
   text-align: center;
+  color: darksalmon;
 }
 /* siting myself here - from my tic tac toe project from here */
 .container {
-  border: 1px solid gold;
   display: flex;
   justify-content: center;
 }
 
 .wrapper {
-  border: 1px solid crimson;
   display: flex;
   background-color: cornflowerblue;
+  margin-top: 5%;
 }
 
 /* .row {
@@ -25,7 +25,6 @@ h1 {
 } */
 
 .column {
-  border: 1px solid plum;
   display: flex;
   flex-direction: column-reverse;
 }

@@ -82,10 +82,10 @@ $(() => {
         const diagonalLeftBoard = changeLeftDiagonal(board);
         winScenario(diagonalLeftBoard);
 
-        const diagonalRightBoard = changeRightDiagonal(horizontalBoard);
-        console.log("diagonalRightBoard", diagonalRightBoard);
-        console.log("diagonalLeftBoard", diagonalLeftBoard);
-        winScenario(diagonalRightBoard);
+        // const diagonalRightBoard = changeRightDiagonal(horizontalBoard);
+        // console.log("diagonalRightBoard", diagonalRightBoard);
+        // console.log("diagonalLeftBoard", diagonalLeftBoard);
+        // winScenario(diagonalRightBoard);
 
         winScenario(board);
       });
@@ -112,7 +112,8 @@ $(() => {
         }
         //console.log(redsInARow);
         if (redsInARow === 4) {
-          console.log("Red wins!");
+          const $output = $(".results");
+          $output.text("Red wins!");
           resetBoard();
           // yellows turn
         }

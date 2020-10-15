@@ -2,6 +2,9 @@ body {
   background-color: paleturquoise;
 }
 
+h1 {
+  text-align: center;
+}
 /* siting myself here - from my tic tac toe project from here */
 .container {
   border: 1px solid gold;
@@ -49,9 +52,20 @@ body {
 /* siting myself here - from my tic tac toe project from here */
 .cell {
   border: 3px solid cornflowerblue;
-  height: 100px;
-  width: 100px;
+  height: 7em;
+  width: 7em;
 }
 
+@media only screen and (max-width: 800px) {
+  .cell {
+    height: 5em;
+    width: 5em;
+  }
+}
 
-
+@media only screen and (max-width: 678px) {
+  .cell {
+    height: 2em;
+    width: 2em;
+  }
+}

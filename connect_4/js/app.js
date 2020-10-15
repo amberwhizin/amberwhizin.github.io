@@ -83,8 +83,8 @@ $(() => {
         winScenario(diagonalLeftBoard);
 
         const diagonalRightBoard = changeRightDiagonal(horizontalBoard);
-        // console.log("diagonalRightBoard", diagonalRightBoard);
-        // console.log("diagonalLeftBoard", diagonalLeftBoard);
+        console.log("diagonalRightBoard", diagonalRightBoard);
+        console.log("diagonalLeftBoard", diagonalLeftBoard);
         winScenario(diagonalRightBoard);
 
         winScenario(board);

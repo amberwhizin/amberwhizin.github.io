@@ -68,8 +68,10 @@ $(() => {
           currentColumnInfo.push(yellow);
         }
         render();
-        const horizontalBoard = getHorizontalBoard(board);
+        const horizontalBoard = changeToRow(board);
         winScenario(horizontalBoard);
+
+        //console.log(board);
         winScenario(board);
       });
 
@@ -87,27 +89,27 @@ $(() => {
       let yellowsInARow = 0;
 
       for (let j = 0; j < column.length; j++) {
-        const cell = column[j];
+        const token = column[j];
 
-        if (cell === red) {
+        if (token === red) {
           ++redsInARow;
-        } else if (cell === yellow) {
+        } else if (token === yellow) {
           // edge case
           redsInARow = 0;
         }
-        console.log(redsInARow);
+        //console.log(redsInARow);
         if (redsInARow === 4) {
           console.log("Red wins!");
           board = [[], [], [], [], [], [], []];
           // yellows turn
         }
-        if (cell === yellow) {
+        if (token === yellow) {
           ++yellowsInARow;
-        } else if (cell === red) {
+        } else if (token === red) {
           // edge case
           yellowsInARow = 0;
         }
-        console.log(yellowsInARow);
+        //console.log(yellowsInARow);
         if (yellowsInARow === 4) {
           console.log("Yellow wins!");
           board = [[], [], [], [], [], [], []];
@@ -127,20 +129,31 @@ $(() => {
     }
   };
   render();
+
+  //find row in column
+  // citing https://medium.com/dev-genius/lets-rotate-a-matrix-clockwise-javascript-beginners-65a9c34aa0a6
+  const changeToRow = (board) => {
+    const row0 = [];
+    const row1 = [];
+    const row2 = [];
+    const row3 = [];
+    const row4 = [];
+    const row5 = [];
+    const row6 = [];
+    let boardRow = [row0, row1, row2, row3, row4, row5, row6];
+    for (let i = 0; i < board.length; i++) {
+      const column = board[i];
+      for (let j = 0; j < column.length; j++) {
+        const token = column[j];
+        boardRow[j].push(token);
+      }
+    }
+    console.log(boardRow);
+    return boardRow;
+  };
+
+ 
 });
-
-
-
-const getHorizontalBoard = (board) => {
-  let horizontalBoard = [];
-  for (let i = 0; i < board.length; i++) {
-    const currentColumn = board[i];
-    const copy = currentColumn.slice(0);
-    horizontalBoard.push(copy);
-  }
-  console.log(horizontalBoard, board);
-  return horizontalBoard;
-};
 
 //////////////////////////////////////////
 ////////////GRAVEYARD CODE///////////////

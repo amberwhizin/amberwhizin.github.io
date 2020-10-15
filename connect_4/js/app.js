@@ -11,6 +11,10 @@ $(() => {
   const column6 = [];
   let board = [column0, column1, column2, column3, column4, column5, column6];
 
+  const resetBoard = () => {
+    board = [[], [], [], [], [], [], []];
+  };
+
   // if not player1 turn then player2
   // siting myself here via tic-tac-toe project
   let isPlayer1 = false;
@@ -69,9 +73,10 @@ $(() => {
         }
         render();
         const horizontalBoard = changeToRow(board);
+        console.log(horizontalBoard);
         winScenario(horizontalBoard);
 
-        const diagonalLeftBoard = changeLeftDiagonal(board, boardRow);
+        const diagonalLeftBoard = changeLeftDiagonal(board);
         winScenario(diagonalLeftBoard);
 
         //console.log(board);
@@ -102,7 +107,7 @@ $(() => {
         //console.log(redsInARow);
         if (redsInARow === 4) {
           console.log("Red wins!");
-          board = [[], [], [], [], [], [], []];
+          resetBoard();
           // yellows turn
         }
         if (token === yellow) {
@@ -114,7 +119,7 @@ $(() => {
         //console.log(yellowsInARow);
         if (yellowsInARow === 4) {
           console.log("Yellow wins!");
-          board = [[], [], [], [], [], [], []];
+          resetBoard();
         }
       }
     }
@@ -132,15 +137,16 @@ $(() => {
 
   //find row in column
   // citing https://medium.com/dev-genius/lets-rotate-a-matrix-clockwise-javascript-beginners-65a9c34aa0a6
-  const row0 = [];
-  const row1 = [];
-  const row2 = [];
-  const row3 = [];
-  const row4 = [];
-  const row5 = [];
-  const row6 = [];
-  let boardRow = [row0, row1, row2, row3, row4, row5, row6];
+
   const changeToRow = (board) => {
+    const row0 = [];
+    const row1 = [];
+    const row2 = [];
+    const row3 = [];
+    const row4 = [];
+    const row5 = [];
+    const row6 = [];
+    let boardRow = [row0, row1, row2, row3, row4, row5, row6];
     for (let i = 0; i < board.length; i++) {
       const column = board[i];
       for (let j = 0; j < column.length; j++) {
@@ -181,17 +187,15 @@ $(() => {
       diagonal10,
       diagonal11,
     ];
-    for (let i = 0; i < board.length; i++) {
-      const column = board[i];
-      for (let j = 0; j < column.length; j++) {
-        const token = column[j];
-        const x = i
-        const y = j
-        const add = x + y;
-        const diag = add;
+    for (let columnIndex = 0; columnIndex < board.length; columnIndex++) {
+      const column = board[columnIndex];
+      for (let rowIndex = 0; rowIndex < column.length; rowIndex++) {
+        const token = column[rowIndex];
+        const diag = columnIndex + rowIndex;
 
-        console.log(diag)
-        boardDiagonal[j].push(diag);
+        console.log(diag);
+        boardDiagonal[diag].push(token);
+
       }
     }
     console.log(boardDiagonal);

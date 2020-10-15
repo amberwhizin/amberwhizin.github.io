@@ -62,24 +62,31 @@ $(() => {
       .addClass("column")
       .addClass(`column${index}`)
       .on("click", () => {
-        if (currentColumnInfo.length >= 6) {
-          return;
-        }
+        //to do: fix this
+        // if (currentColumnInfo.length >= 6) {
+        //   return;
+        // }
         const isPlayer1 = getIsPlayer1Turn();
         if (isPlayer1) {
           currentColumnInfo.push(red);
+          // currentColumnInfo.shift();
         } else {
           currentColumnInfo.push(yellow);
+          // currentColumnInfo.shift();
         }
         render();
+        //
         const horizontalBoard = changeToRow(board);
-        console.log(horizontalBoard);
         winScenario(horizontalBoard);
 
         const diagonalLeftBoard = changeLeftDiagonal(board);
         winScenario(diagonalLeftBoard);
 
-        //console.log(board);
+        // const diagonalRightBoard = changeLeftDiagonal(horizontalBoard);
+        // console.log("diagonalRightBoard", diagonalRightBoard);
+        // console.log("diagonalLeftBoard", diagonalLeftBoard);
+        // winScenario(diagonalRightBoard);
+
         winScenario(board);
       });
 
@@ -100,8 +107,7 @@ $(() => {
 
         if (token === red) {
           ++redsInARow;
-        } else if (token === yellow) {
-          // edge case
+        } else {
           redsInARow = 0;
         }
         //console.log(redsInARow);
@@ -112,7 +118,7 @@ $(() => {
         }
         if (token === yellow) {
           ++yellowsInARow;
-        } else if (token === red) {
+        } else {
           // edge case
           yellowsInARow = 0;
         }
@@ -145,17 +151,18 @@ $(() => {
     const row3 = [];
     const row4 = [];
     const row5 = [];
-    const row6 = [];
-    let boardRow = [row0, row1, row2, row3, row4, row5, row6];
-    for (let i = 0; i < board.length; i++) {
-      const column = board[i];
-      for (let j = 0; j < column.length; j++) {
-        const token = column[j];
-        boardRow[j].push(token);
+    let boardRow = [row0, row1, row2, row3, row4, row5];
+    for (let columnIndex = 0; columnIndex < board.length; columnIndex++) {
+      const column = board[columnIndex];
+      for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
+        const token = column[rowIndex];
+        const row = boardRow[rowIndex];
+
+        row.push(token);
       }
     }
-    //console.log(boardRow);
 
+    console.log({ boardRow, board });
     return boardRow;
   };
 
@@ -172,6 +179,7 @@ $(() => {
     const diagonal9 = [];
     const diagonal10 = [];
     const diagonal11 = [];
+    const diagonal12 = [];
 
     let boardDiagonal = [
       diagonal0,
@@ -186,20 +194,61 @@ $(() => {
       diagonal9,
       diagonal10,
       diagonal11,
+      diagonal12,
     ];
-    for (let columnIndex = 0; columnIndex < board.length; columnIndex++) {
+    for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
       const column = board[columnIndex];
-      for (let rowIndex = 0; rowIndex < column.length; rowIndex++) {
+      for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
         const token = column[rowIndex];
         const diag = columnIndex + rowIndex;
 
-        console.log(diag);
         boardDiagonal[diag].push(token);
-
       }
     }
-    console.log(boardDiagonal);
+    console.log({ boardDiagonal });
+    return boardDiagonal;
+  };
 
+   const changeLeftDiagonal = (board) => {
+    const diagonal0 = [];
+    const diagonal1 = [];
+    const diagonal2 = [];
+    const diagonal3 = [];
+    const diagonal4 = [];
+    const diagonal5 = [];
+    const diagonal6 = [];
+    const diagonal7 = [];
+    const diagonal8 = [];
+    const diagonal9 = [];
+    const diagonal10 = [];
+    const diagonal11 = [];
+    const diagonal12 = [];
+
+    let boardDiagonal = [
+      diagonal0,
+      diagonal1,
+      diagonal2,
+      diagonal3,
+      diagonal4,
+      diagonal5,
+      diagonal6,
+      diagonal7,
+      diagonal8,
+      diagonal9,
+      diagonal10,
+      diagonal11,
+      diagonal12,
+    ];
+    for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
+      const column = board[columnIndex];
+      for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
+        const token = column[rowIndex];
+        const diag = columnIndex + rowIndex;
+
+        boardDiagonal[diag].push(token);
+      }
+    }
+    console.log({ boardDiagonal });
     return boardDiagonal;
   };
 });

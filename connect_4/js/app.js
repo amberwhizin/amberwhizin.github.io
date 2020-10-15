@@ -208,49 +208,6 @@ $(() => {
     console.log({ boardDiagonal });
     return boardDiagonal;
   };
-
-   const changeLeftDiagonal = (board) => {
-    const diagonal0 = [];
-    const diagonal1 = [];
-    const diagonal2 = [];
-    const diagonal3 = [];
-    const diagonal4 = [];
-    const diagonal5 = [];
-    const diagonal6 = [];
-    const diagonal7 = [];
-    const diagonal8 = [];
-    const diagonal9 = [];
-    const diagonal10 = [];
-    const diagonal11 = [];
-    const diagonal12 = [];
-
-    let boardDiagonal = [
-      diagonal0,
-      diagonal1,
-      diagonal2,
-      diagonal3,
-      diagonal4,
-      diagonal5,
-      diagonal6,
-      diagonal7,
-      diagonal8,
-      diagonal9,
-      diagonal10,
-      diagonal11,
-      diagonal12,
-    ];
-    for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
-      const column = board[columnIndex];
-      for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
-        const token = column[rowIndex];
-        const diag = columnIndex + rowIndex;
-
-        boardDiagonal[diag].push(token);
-      }
-    }
-    console.log({ boardDiagonal });
-    return boardDiagonal;
-  };
 });
 
 //////////////////////////////////////////

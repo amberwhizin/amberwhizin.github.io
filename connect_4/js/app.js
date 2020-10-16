@@ -22,6 +22,7 @@ $(() => {
     isPlayer1 = !isPlayer1;
     return isPlayer1;
   };
+
   // returns red circles, if true is passed in then return yellow
   const generateCircle = (isYellow = false) => {
     const $circle = $("<div>").addClass("circle");
@@ -39,9 +40,18 @@ $(() => {
         .addClass("cell")
         .addClass("cell" + i);
 
+      //     //drag and drop
+
+      // const $drag = $("<div>")
+      //   .attr("id", "drag").draggable()
+      //   .text("Change your mind? Drag me somewhere else!");
+      // $("body").append($drag);
+
       if (piece === yellow) {
-        const $circle = generateCircle(true);
+        const $circle = generateCircle(true)
         $cell.append($circle);
+        $cell.draggable().droppable()
+        
       }
       if (piece === red) {
         const $circle = generateCircle();
@@ -104,7 +114,6 @@ $(() => {
 
       for (let j = 0; j < column.length; j++) {
         const token = column[j];
-
         if (token === red) {
           ++redsInARow;
         } else {
@@ -255,69 +264,3 @@ $(() => {
   };
 });
 
-//////////////////////////////////////////
-////////////GRAVEYARD CODE///////////////
-////////////////////////////////////////
-
-// //column[j] + row[k] === diagonal[i]
-// for (let i = 0; i < $column.length; i++) {
-//   const token = column[i];
-//   for (let j = 0; j < row.length; j++) {
-//     const tokenRow = row[j];
-
-//   }
-// }
-//const diagonal = Math.sqrt(j) + Math.sqrt(k)
-// diagonal === Math.sqrt(i)
-//boardDiagonal.push()
-
-// cell5 is clicked
-//cell5.shift
-// cell5.unshift
-
-//if cell is clicked, and its red, push it into the array, then render the array position
-//you click in column 0,
-//go to the earliest position
-
-// horizontal
-//   debugger;
-//   if (
-//     piece === column0[i] &&
-//     piece === column1[i] &&
-//     piece === column2[i] &&
-//     piece === column3[i]
-//   ) {
-//     score++;
-//     console.log(score)
-//     if (score === 4) {
-//       alert("winner");
-//     }
-// }
-
-// if (piece === piece * 4) {
-//winner
-//} sort it?
-
-// if (array.includes['red', 'red', 'red', 'red']) {
-//winner
-//}
-
-// if (column === red) {
-//   score++;
-//   console.log("column");
-//   column.shift();
-//   win.push(column);
-//   if (win === 4) {
-//     console.log("winner");
-//   }
-// } else {
-//   score++;
-//   console.log("keep at it");
-// }
-// if (piece.includes([red, red, red, red])) {
-//   console.log("*******", piece);
-//   console.log("winner");
-// } else {
-//   score++;
-//   console.log("keep at it");
-// }

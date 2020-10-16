@@ -1,10 +1,18 @@
 body {
   background-color: paleturquoise;
+  text-align: center;
 }
 
 h1 {
   text-align: center;
   color: darksalmon;
+}
+.results {
+  color: grey;
+  font-weight: 600;
+  font-size: 25px;
+  margin-top: 20px
+  
 }
 /* siting myself here - from my tic tac toe project from here */
 .container {

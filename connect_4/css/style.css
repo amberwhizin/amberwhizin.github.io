@@ -62,6 +62,7 @@ h1 {
   width: 7em;
 }
 .starter-cell {
+  cursor: pointer;
   height: 7em;
   width: 7em;
 }

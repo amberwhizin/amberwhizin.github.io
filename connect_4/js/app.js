@@ -96,7 +96,7 @@ $(() => {
       .on("click", onClick);
 
     makeCells($column, currentColumnInfo); // holds info for my cells
-
+    // cite https://jqueryui.com/droppable/
     $column.droppable({
       drop: (e, ui) => {
         console.log({ e, ui });

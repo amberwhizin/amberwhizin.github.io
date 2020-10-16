@@ -59,42 +59,52 @@ $(() => {
   // creates columns with cells in them
   const generateColumn = (index) => {
     const currentColumnInfo = board[index];
+    const onClick = () => {
+      //to do: fix this
+      // if (currentColumnInfo.length >= 6) {
+      //   return;
+      // }
+      const isPlayer1 = getIsPlayer1Turn();
+      if (isPlayer1) {
+        currentColumnInfo.push(red);
+        // currentColumnInfo.shift();
+      } else {
+        currentColumnInfo.push(yellow);
+        // currentColumnInfo.shift();
+      }
+      render();
+      //
+      const horizontalBoard = changeToRow(board);
+      winScenario(horizontalBoard);
+
+      const diagonalLeftBoard = changeLeftDiagonal(board);
+      winScenario(diagonalLeftBoard);
+
+      // this was hard, but i was trying to reverse the board but was mutating the original board which made a crazy light show
+      const reverseBoard = board.slice().reverse();
+
+      const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
+      console.log("diagonalRightBoard", diagonalRightBoard);
+      console.log("diagonalLeftBoard", diagonalLeftBoard);
+      winScenario(diagonalRightBoard);
+
+      winScenario(board);
+    };
     const $column = $("<div>")
       .addClass("column")
       .addClass(`column${index}`)
-      .on("click", () => {
-        //to do: fix this
-        // if (currentColumnInfo.length >= 6) {
-        //   return;
-        // }
-        const isPlayer1 = getIsPlayer1Turn();
-        if (isPlayer1) {
-          currentColumnInfo.push(red);
-          // currentColumnInfo.shift();
-        } else {
-          currentColumnInfo.push(yellow);
-          // currentColumnInfo.shift();
-        }
-        render();
-        //
-        const horizontalBoard = changeToRow(board);
-        winScenario(horizontalBoard);
-
-        const diagonalLeftBoard = changeLeftDiagonal(board);
-        winScenario(diagonalLeftBoard);
-
-        // this was hard, but i was trying to reverse the board but was mutating the original board which made a crazy light show
-        const reverseBoard = board.slice().reverse();
-
-        const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
-        console.log("diagonalRightBoard", diagonalRightBoard);
-        console.log("diagonalLeftBoard", diagonalLeftBoard);
-        winScenario(diagonalRightBoard);
-
-        winScenario(board);
-      });
+      .on("click", onClick);
 
     makeCells($column, currentColumnInfo); // holds info for my cells
+
+    $column.droppable({
+      drop: (e, ui) => {
+        console.log({ e, ui });
+        const $circle = ui.draggable[0];
+        $circle.remove();
+        onClick();
+      },
+    });
     return $column;
   };
 
@@ -139,6 +149,7 @@ $(() => {
   // makes multiple columns
   const render = () => {
     $(".wrapper").empty();
+    $(".fixed-token").empty();
     for (let i = 0; i < 7; i++) {
       const $column = generateColumn(i);
       $(".wrapper").append($column);
@@ -146,7 +157,8 @@ $(() => {
 
     // creat piece
     const $cell = $("<div>").addClass("starter-cell");
-    const $circle = generateCircle(true);
+    const $circle = generateCircle(isPlayer1);
+    $circle.draggable();
     $cell.append($circle);
     $(".fixed-token").append($cell);
   };

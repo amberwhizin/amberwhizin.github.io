@@ -2,7 +2,7 @@
 
 ### About
 
-My clone of the game Connect 4. I played this a lot as a child with my friend Erin, we would battle until bedtime! It is a two player game where you drop cylinders into slots starting from the bottom up. The cylinders stack on top of one another as the player works to get 4 in a row, column, or diagonally - before the other player to wins the game!
+My clone of the game Connect 4. I played this a lot as a child with my friends, and we would battle until bedtime! It is a two player game where you drop tokens into slots starting from the bottom up. The tokens stack on top of one another as the player works to get 4 in a row, column, or diagonally - before the other player to wins the game!
 
 
 ### Technologies
@@ -15,6 +15,8 @@ My clone of the game Connect 4. I played this a lot as a child with my friend Er
 - Hardcoded basic layout into HTML
 - Transferred it to JQuery and JavaScript for flexibility
 - Add CSS Styling
+- Create game logic
+- Add Drag and Drop
 - Polish and test my game
 
 
@@ -25,8 +27,6 @@ https://amberwhizin.github.io/connect_4/
 
 ### Unsolved Problems:
 
-- reset win text after resetting the board
-- tell the user they can click anywhere to play the game again
 - Animate cylinder dropping after click
 - strike through for the winner
 - Directions
@@ -36,7 +36,7 @@ https://amberwhizin.github.io/connect_4/
 ### Stretch Goals
 
 - Login page
-- 3d board and tokens
+- 3d style
 - Play against the computer
 
 

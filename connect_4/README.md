@@ -25,7 +25,7 @@ https://amberwhizin.github.io/connect_4/
 
 ### Issues I want to fix:
 
-- reset win after reseting the board
+- reset win text after reseting the board
 - tell the user they can click anywhere to play the game again
 
 

@@ -60,10 +60,9 @@ $(() => {
   const generateColumn = (index) => {
     const currentColumnInfo = board[index];
     const onClick = () => {
-      //to do: fix this
-      // if (currentColumnInfo.length >= 6) {
-      //   return;
-      // }
+      if (currentColumnInfo.length >= 6) {
+        return;
+      }
       const isPlayer1 = getIsPlayer1Turn();
       if (isPlayer1) {
         currentColumnInfo.push(red);
@@ -84,8 +83,7 @@ $(() => {
       const reverseBoard = board.slice().reverse();
 
       const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
-      console.log("diagonalRightBoard", diagonalRightBoard);
-      console.log("diagonalLeftBoard", diagonalLeftBoard);
+
       winScenario(diagonalRightBoard);
 
       winScenario(board);
@@ -99,7 +97,6 @@ $(() => {
     // cite https://jqueryui.com/droppable/
     $column.droppable({
       drop: (e, ui) => {
-        console.log({ e, ui });
         const $circle = ui.draggable[0];
         $circle.remove();
         onClick();
@@ -123,7 +120,7 @@ $(() => {
         } else {
           redsInARow = 0;
         }
-        //console.log(redsInARow);
+
         if (redsInARow === 4) {
           const $outputRed = $(".results");
           $outputRed.text("Red wins!");
@@ -136,7 +133,7 @@ $(() => {
           // edge case
           yellowsInARow = 0;
         }
-        //console.log(yellowsInARow);
+
         if (yellowsInARow === 4) {
           const $outputYellow = $(".results");
           $outputYellow.text("Yellow wins!");
@@ -184,8 +181,6 @@ $(() => {
         row.push(token);
       }
     }
-
-    console.log({ boardRow, board });
     return boardRow;
   };
 

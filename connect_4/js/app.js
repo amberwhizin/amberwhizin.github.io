@@ -19,6 +19,7 @@ $(() => {
   };
 
   // if not player1 turn then player2
+  // and returns player1 
   // siting myself here via tic-tac-toe project
   let isPlayer1 = false;
   const getIsPlayer1Turn = () => {
@@ -26,7 +27,7 @@ $(() => {
     return isPlayer1;
   };
 
-  // returns red circles, if true is passed in then return yellow
+  // returns red circles, if true is passed in then add a class yellow and return
   const generateCircle = (isYellow = false) => {
     const $circle = $("<div>").addClass("circle");
     if (isYellow) {
@@ -34,7 +35,7 @@ $(() => {
     }
     return $circle;
   };
-
+// and append  the cells to place the tokens into 
   // invokes circles when screen clicked, switches between the two
   const makeCells = ($column, columnInfo) => {
     for (let i = 0; i < 6; i++) {
@@ -43,6 +44,7 @@ $(() => {
         .addClass("cell")
         .addClass("cell" + i);
 
+        // if the token is is yellow, it will run isYellow function
       if (piece === yellow) {
         const $circle = generateCircle(true);
         $cell.append($circle);
@@ -58,20 +60,23 @@ $(() => {
       $column.append($cell);
     }
   };
-
+ // passing in the render loop index
+ // and creates columns through the arrays above
   // creates columns with cells in them
   const generateColumn = (index) => {
     const currentColumnInfo = board[index];
+ 
     const onClick = () => {
-      // everytime you click clear who won
+      // every time you click clears who won, resetting reWOn and YellowWOn
       redWon = false;
       yellowWon = false;
       const $outputYellow = $(".results");
       $outputYellow.text("");
-
+      // so the pieces dont go on forever
       if (currentColumnInfo.length >= 6) {
         return;
       }
+      // depending on whose turn it is, i push the string red/yellow into my empty arrays above and render it 
       const isPlayer1 = getIsPlayer1Turn();
       if (isPlayer1) {
         currentColumnInfo.push(red);
@@ -79,28 +84,30 @@ $(() => {
         currentColumnInfo.push(yellow);
       }
       render();
-      //
+
+      // checking to see end game scenarios
       const horizontalBoard = changeToRow(board);
       winScenario(horizontalBoard);
 
       const diagonalLeftBoard = changeLeftDiagonal(board);
       winScenario(diagonalLeftBoard);
 
-      // this was hard, but i was trying to reverse the board but was mutating the original board which made a crazy light show
+      // this was hard, but i was trying to reverse the board but it was mutating the original board which made a crazy light show
       const reverseBoard = board.slice().reverse();
-
       const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
-
       winScenario(diagonalRightBoard);
 
+      // winScenario takes an array of arrays and because of that works for all cases
       winScenario(board);
+      // was easier to just check for undefined tokens with horizontal board - regular board doesn't keep track of the blank spaces
       tieScenario(horizontalBoard);
     };
+    // draggable/droppable methods here drops/drags after each click and removes it from the corner space
     const $column = $("<div>")
       .addClass("column")
       .addClass(`column${index}`)
       .on("click", onClick);
-
+    // here i take in my column div and the column arrays
     makeCells($column, currentColumnInfo); // holds info for my cells
     // cite https://jqueryui.com/droppable/
     $column.droppable({
@@ -112,13 +119,15 @@ $(() => {
     });
     return $column;
   };
+
+  //
   const tieScenario = (board) => {
     for (let i = 0; i < board.length; i++) {
       const column = board[i];
 
       for (let j = 0; j < column.length; j++) {
         const token = column[j];
-        // if there are empty spaces its not a tie
+        // if there are empty spaces left on the board its not a tie 
         if (token === undefined) {
           // not a tie breaks out of loop
           return;
@@ -174,8 +183,8 @@ $(() => {
       }
     }
   };
-
-  // makes multiple columns
+ // the render function loops 7 times to 
+  // make multiple columns
   const render = () => {
     $(".wrapper").empty();
     $(".fixed-token").empty();
@@ -184,7 +193,7 @@ $(() => {
       $(".wrapper").append($column);
     }
 
-    // creat piece
+    // created piece the fixed piece to drag it using draggable() method
     const $cell = $("<div>").addClass("starter-cell");
     const $circle = generateCircle(isPlayer1);
     $circle.draggable();
@@ -193,9 +202,11 @@ $(() => {
   };
   render();
 
+  // if theres and element in column it will push the index into the  corresponding row array, the index is the row! found the pattern
+  // vertical wins just neatly stack on top of one another, theres no spaces like in horizontal, where i had to add undefined to win in a row, it was having me win because nothing was separating the elements the array.
   //find row in column
   // citing https://medium.com/dev-genius/lets-rotate-a-matrix-clockwise-javascript-beginners-65a9c34aa0a6
-
+ 
   const changeToRow = (board) => {
     const row0 = [];
     const row1 = [];
@@ -210,12 +221,15 @@ $(() => {
         const token = column[rowIndex];
         const row = boardRow[rowIndex];
 
+        // also pushing undefined
         row.push(token);
       }
     }
     return boardRow;
   };
 
+  // diagonal is different, it adds the column index and the row index together in finds the corresponding diagonal "row" 
+  // i had to figure out the other direction of diagonal, which is if you flip the board around in your head its the same, so i used reverse method on a copy of the board itself to reverse the columns
   const changeLeftDiagonal = (board) => {
     const diagonal0 = [];
     const diagonal1 = [];

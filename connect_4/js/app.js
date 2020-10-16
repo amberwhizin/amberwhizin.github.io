@@ -2,6 +2,9 @@ $(() => {
   const yellow = "yellow";
   const red = "red";
 
+  let redWon = false;
+  let yellowWon = false;
+
   const column0 = [];
   const column1 = [];
   const column2 = [];
@@ -60,16 +63,20 @@ $(() => {
   const generateColumn = (index) => {
     const currentColumnInfo = board[index];
     const onClick = () => {
+      // everytime you click clear who won
+      redWon = false;
+      yellowWon = false;
+      const $outputYellow = $(".results");
+      $outputYellow.text("");
+
       if (currentColumnInfo.length >= 6) {
         return;
       }
       const isPlayer1 = getIsPlayer1Turn();
       if (isPlayer1) {
         currentColumnInfo.push(red);
-        // currentColumnInfo.shift();
       } else {
         currentColumnInfo.push(yellow);
-        // currentColumnInfo.shift();
       }
       render();
       //
@@ -87,6 +94,7 @@ $(() => {
       winScenario(diagonalRightBoard);
 
       winScenario(board);
+      tieScenario(horizontalBoard);
     };
     const $column = $("<div>")
       .addClass("column")
@@ -103,6 +111,28 @@ $(() => {
       },
     });
     return $column;
+  };
+  const tieScenario = (board) => {
+    for (let i = 0; i < board.length; i++) {
+      const column = board[i];
+
+      for (let j = 0; j < column.length; j++) {
+        const token = column[j];
+        // if there are empty spaces its not a tie
+        if (token === undefined) {
+          // not a tie breaks out of loop
+          return;
+        }
+      }
+    }
+    // if all spaces are filled its a tie
+    // if nobody won and alllll the spaces are fill its a tie
+    if (!redWon && !yellowWon) {
+      const $outputYellow = $(".results");
+      $outputYellow.text("It's a tie!");
+      resetBoard();
+    }
+    return;
   };
 
   //win logic
@@ -124,6 +154,7 @@ $(() => {
         if (redsInARow === 4) {
           const $outputRed = $(".results");
           $outputRed.text("Red wins!");
+          redWon = true;
           resetBoard();
           // yellows turn
         }
@@ -137,6 +168,7 @@ $(() => {
         if (yellowsInARow === 4) {
           const $outputYellow = $(".results");
           $outputYellow.text("Yellow wins!");
+          yellowWon = true;
           resetBoard();
         }
       }

@@ -92,10 +92,14 @@ $(() => {
         const diagonalLeftBoard = changeLeftDiagonal(board);
         winScenario(diagonalLeftBoard);
 
-        // const diagonalRightBoard = changeRightDiagonal(horizontalBoard);
-        // console.log("diagonalRightBoard", diagonalRightBoard);
-        // console.log("diagonalLeftBoard", diagonalLeftBoard);
-        // winScenario(diagonalRightBoard);
+        // this was hard, but i was trying to reverse the board but was mutating the original board which made a crazy light show
+        const reverseBoard = board.slice().reverse()
+
+       
+        const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
+        console.log("diagonalRightBoard", diagonalRightBoard);
+        console.log("diagonalLeftBoard", diagonalLeftBoard);
+        winScenario(diagonalRightBoard);
 
         winScenario(board);
       });
@@ -217,49 +221,6 @@ $(() => {
       }
     }
 
-    return boardDiagonal;
-  };
-  const changeRightDiagonal = (board) => {
-    const diagonal0 = [];
-    const diagonal1 = [];
-    const diagonal2 = [];
-    const diagonal3 = [];
-    const diagonal4 = [];
-    const diagonal5 = [];
-    const diagonal6 = [];
-    const diagonal7 = [];
-    const diagonal8 = [];
-    const diagonal9 = [];
-    const diagonal10 = [];
-    const diagonal11 = [];
-    const diagonal12 = [];
-
-    let boardDiagonal = [
-      diagonal0,
-      diagonal1,
-      diagonal2,
-      diagonal3,
-      diagonal4,
-      diagonal5,
-      diagonal6,
-      diagonal7,
-      diagonal8,
-      diagonal9,
-      diagonal10,
-      diagonal11,
-      diagonal12,
-    ];
-
-    for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
-      const row = board[rowIndex];
-      for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
-        const token = row[columnIndex];
-        const diag = rowIndex + columnIndex;
-
-        boardDiagonal[diag].push(token);
-      }
-    }
-    console.log({ boardDiagonal });
     return boardDiagonal;
   };
 });

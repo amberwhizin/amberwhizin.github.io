@@ -50,7 +50,7 @@ $(() => {
       if (piece === yellow) {
         const $circle = generateCircle(true)
         $cell.append($circle);
-        $cell.draggable().droppable()
+        
         
       }
       if (piece === red) {

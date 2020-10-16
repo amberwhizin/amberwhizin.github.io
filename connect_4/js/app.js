@@ -112,8 +112,8 @@ $(() => {
         }
         //console.log(redsInARow);
         if (redsInARow === 4) {
-          const $output = $(".results");
-          $output.text("Red wins!");
+          const $outputRed = $(".results");
+          $outputRed.text("Red wins!");
           resetBoard();
           // yellows turn
         }
@@ -125,7 +125,8 @@ $(() => {
         }
         //console.log(yellowsInARow);
         if (yellowsInARow === 4) {
-          console.log("Yellow wins!");
+          const $outputYellow = $(".results");
+          $outputYellow.text("Yellow wins!");
           resetBoard();
         }
       }

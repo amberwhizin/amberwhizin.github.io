@@ -40,18 +40,9 @@ $(() => {
         .addClass("cell")
         .addClass("cell" + i);
 
-      //     //drag and drop
-
-      // const $drag = $("<div>")
-      //   .attr("id", "drag").draggable()
-      //   .text("Change your mind? Drag me somewhere else!");
-      // $("body").append($drag);
-
       if (piece === yellow) {
-        const $circle = generateCircle(true)
+        const $circle = generateCircle(true);
         $cell.append($circle);
-        
-        
       }
       if (piece === red) {
         const $circle = generateCircle();
@@ -93,9 +84,8 @@ $(() => {
         winScenario(diagonalLeftBoard);
 
         // this was hard, but i was trying to reverse the board but was mutating the original board which made a crazy light show
-        const reverseBoard = board.slice().reverse()
+        const reverseBoard = board.slice().reverse();
 
-       
         const diagonalRightBoard = changeLeftDiagonal(reverseBoard);
         console.log("diagonalRightBoard", diagonalRightBoard);
         console.log("diagonalLeftBoard", diagonalLeftBoard);
@@ -153,6 +143,12 @@ $(() => {
       const $column = generateColumn(i);
       $(".wrapper").append($column);
     }
+
+    // creat piece
+    const $cell = $("<div>").addClass("starter-cell");
+    const $circle = generateCircle(true);
+    $cell.append($circle);
+    $(".fixed-token").append($cell);
   };
   render();
 
@@ -224,4 +220,3 @@ $(() => {
     return boardDiagonal;
   };
 });
-

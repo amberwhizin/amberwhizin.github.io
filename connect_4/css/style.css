@@ -11,8 +11,7 @@ h1 {
   color: grey;
   font-weight: 600;
   font-size: 25px;
-  margin-top: 20px
-  
+  margin-top: 20px;
 }
 /* siting myself here - from my tic tac toe project from here */
 .container {
@@ -62,16 +61,20 @@ h1 {
   height: 7em;
   width: 7em;
 }
+.starter-cell {
+  height: 7em;
+  width: 7em;
+}
 
 @media only screen and (max-width: 800px) {
-  .cell {
+  .cell, .starter-cell {
     height: 5em;
     width: 5em;
   }
 }
 
 @media only screen and (max-width: 678px) {
-  .cell {
+  .cell, .starter-cell {
     height: 2em;
     width: 2em;
   }

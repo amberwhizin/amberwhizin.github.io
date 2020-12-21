@@ -11,4 +11,19 @@ A two player game where you drop cylinders into slots starting from the bottom u
 
 # Approach
 
-First I started mapping out the entire project on google docs. Deciding which day I was going to work on what. Giving myself enough time at teh end to test and polish the app before deployment. Factoring in win/lose logic was going to take the longest. 
+First I started mapping out the entire project on google docs. Deciding which day I was going to work on what. Giving myself enough time at teh end to test and polish the app before deployment. Factoring in win/lose logic was going to take the longest. Finally, applying the rest of the CSS3.
+
+
+# Unsolved
+
+The coin needs to appear when the appropriate slot is clicked on.
+
+# Challenges
+
+The virtical and horizontal wins took me some time to figure out how to do it properly.
+
+# Stretch Goals/Notes
+
+- Add AI
+- 3d effects
+- login/sign up page
